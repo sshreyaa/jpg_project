@@ -1,0 +1,7 @@
+[1001/161307.783:ERROR:filesystem_win.cc(148)] DeleteFile C:\Users\ASUS\AppData\Local\Temp\scoped_dir54796_1467107136\Crashpad\reports\dcefdf21-ee3e-4f74-9ce1-190d147ad572.dmp: The process cannot access the file because it is being used by another process. (0x20)
+[1128/003016.145:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+[1128/011144.542:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+[1128/012503.329:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+[1128/014136.607:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+[1128/014235.494:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+[1128/014428.786:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)

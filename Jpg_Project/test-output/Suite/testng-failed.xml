@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite thread-count="2" parallel="classes" name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="2" parallel="classes" name="Chrome Execution(failed)">
+    <parameter name="browser" value="Chrome"/>
+    <classes>
+      <class name="com.selenium.basecode.BaseCode">
+        <methods>
+          <include name="executeTest"/>
+          <include name="browserclose"/>
+          <include name="browser"/>
+        </methods>
+      </class> <!-- com.selenium.basecode.BaseCode -->
+    </classes>
+  </test> <!-- Chrome Execution(failed) -->
+  <test thread-count="2" parallel="classes" name="Firefox Execution(failed)">
+    <parameter name="browser" value="Firefox"/>
+    <classes>
+      <class name="com.selenium.basecode.BaseCode">
+        <methods>
+          <include name="executeTest"/>
+          <include name="browserclose"/>
+          <include name="browser"/>
+        </methods>
+      </class> <!-- com.selenium.basecode.BaseCode -->
+    </classes>
+  </test> <!-- Firefox Execution(failed) -->
+</suite> <!-- Failed suite [Suite] -->
