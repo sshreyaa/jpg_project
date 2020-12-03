@@ -1,7 +1,9 @@
 package com.selenium.basecode;
 
 
-import static org.junit.Assert.fail;
+import static org.testng.Assert.fail;
+
+//import static org.junit.Assert.fail;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -13,7 +15,7 @@ import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import javax.swing.JSlider;
-
+import org.apache.log4j.BasicConfigurator; 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
@@ -22,6 +24,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+//import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.Test;
 
@@ -31,7 +34,8 @@ import com.selenium.utils.ReadExcel;
 
 public class BaseCode extends MultipleBrowser{
 	public static Properties prop;
-	public static Logger log=LogManager.getLogger(BaseCode.class.getName());
+	public static Logger log =LogManager.getLogger(BaseCode.class.getName());
+
 
 
 	@Test
@@ -50,11 +54,12 @@ public class BaseCode extends MultipleBrowser{
 
 
 			//TestCase1: To verify HomePage is loading correctly
-			log.info("verifying HomePageTitle");
+			// BasicConfigurator.configure(); 
 			String title = driver.getTitle();
-			log.info("Found homePageTitle->"+title);
 			System.out.println(title);
+			//Assert.fail("abc");
 			Assert.assertEquals(title,"Google");
+			Reporter.log("HomePageTitle is displayed: " + title , true);
 			driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
 
 
@@ -77,18 +82,22 @@ public class BaseCode extends MultipleBrowser{
 			List<WebElement> lstGoogle = driver.findElements(By.xpath("//ul[@role='listbox']//li/descendant::div[@class='sbl1']"));
 			//driver.findElement(By.xpath("//ul[@role='listbox']")).findElements(By.xpath("//li[@role='presentation']"));
 
-			System.out.println("Total no of suggestions in search box:::====> " + lstGoogle.size());
-			for (int i = 0; i < lstGoogle.size(); i++) { 
-				System.out.println(lstGoogle.get(i).getText()); 
+			System.out.println("Total no of suggestions in search box:::====> " + lstGoogle.size()); 
+			for (WebElement wel : lstGoogle) { 
+				System.out.println(wel.getText()); 
 				//System.out.println("abc");
 
-				if (lstGoogle.get(i).getText().contains("jpg to pdf")) {
-					System.out.println("jpg to pdf found :::--->" + lstGoogle.get(i).getText());
+				if (wel.getText().contains("jpg to pdf")) {
+					System.out.println("jpg to pdf found :::--->" + wel.getText());
 					//lstGoogle.get(i).click();
-					break;
+					return;
 
 				}
-			} 
+			}
+			System.out.println("jpg to pdf not found in the suggestion");
+			Assert.fail("jpg to pdf not found in the suggestion");
+
+
 		}
 		catch (StaleElementReferenceException e)
 		{System.out.println(e);
@@ -96,3 +105,4 @@ public class BaseCode extends MultipleBrowser{
 		}
 	}
 }
+
